@@ -26,14 +26,14 @@ trait curl
         //设置body
         curl_setopt( $curl, CURLOPT_NOBODY,  ($return == 0)?1:0 );
         //执行
-		// if($headers)
-		// 	curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
-		// else
-		// 	curl_setopt($curl, CURLOPT_USERAGENT, $UserAgent);
+        // if($headers)
+        //  curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
+        // else
+        //  curl_setopt($curl, CURLOPT_USERAGENT, $UserAgent);
         //超时
-        curl_setopt($curl, CURLOPT_TIMEOUT,2);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        // curl_setopt($curl, CURLOPT_TIMEOUT,2);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 curl_setopt($curl, CURLINFO_HEADER_OUT, true);
         $result = curl_exec( $curl );
 // echo curl_getinfo($curl, CURLINFO_HEADER_OUT);
@@ -66,18 +66,18 @@ curl_setopt($curl, CURLINFO_HEADER_OUT, true);
         curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1 );
         //设置header
         curl_setopt( $curl, CURLOPT_HEADER,  ($return == 1)?0:1 );
-		// if($headers)
-		// 	curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
-		// else
-		// 	curl_setopt($curl, CURLOPT_USERAGENT, $UserAgent);
+        // if($headers)
+        //  curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
+        // else
+        //  curl_setopt($curl, CURLOPT_USERAGENT, $UserAgent);
         //设置body
         curl_setopt( $curl, CURLOPT_NOBODY,  ($return == 0)?1:0 );
         //执行
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-		curl_setopt($curl, CURLINFO_HEADER_OUT, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLINFO_HEADER_OUT, true);
         $result = curl_exec( $curl );
-		// echo curl_getinfo($curl, CURLINFO_HEADER_OUT);
+        // echo curl_getinfo($curl, CURLINFO_HEADER_OUT);
         //如果是header和body都显示，则进行分割
         if( $return==2 )
         {

@@ -3,8 +3,8 @@
  * Created by Sublime.
  * User: kajweb
  * Date: 18/2/26
- * Time: 上午15:58
- * Ver 1.0
+ * Time: 16:45
+ * Ver 0.9 Beta
  */
 include "curl.trait.php";
 // include "simple_html_dom.php";
@@ -33,21 +33,23 @@ class wxUpload
         $map["os"] = "darwin";
         $map["clientversion"] = "1021802080";
         $map["gzip"] = "1";
-        $map["path"] = "pages%2Findex%2Findex%3F";
+        // $map["path"] = "pages%2Findex%2Findex%3F";
         $map["newticket"] = $this->newticket;
         $url = self::makeUrl( $baseUrl, $map ) . "clientversion=1.02.1802080";
         $return = $this->post( $url, $file, false, 1 );
         if( !$return ){
-            $this->error = "网络错误，请联系客服";    //返回空错误，原因未明
+            $this->error = "返回空错误";
             return false;
         }
         $returnArray = json_decode( $return, 1 );
         // if( !$returnArray ){
-        //     $this->error = "网络错误，请联系客服";    //返回空错误，原因未明
+        //     $this->error = "返回空错误";
         //     return false;
         // }
         if( $returnArray['baseresponse']['errcode'] != 0 ){
-            // print_r($returnArray) -80002未有授权应用
+            //0 正常
+            //40001 登陆问题
+            //-80002 没有开发权限。
             $this->error = "上传失败错误";
             return false;
         }

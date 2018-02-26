@@ -1,13 +1,16 @@
 <?
 include 'lib/wxPacker.class.php';
 include 'lib/wxUpload.class.php';
+
 $InputFolder = "wxapp";
+
 $wxPacker = new wxPacker( $InputFolder );
 $pack = $wxPacker->getPack();
 
 $newTicket = $_GET['newTicket'];
 $wxUpload = new wxUpload( $newTicket );
 $src = $wxUpload->upload( $pack );
+// $src = $wxUpload->uploadFile( "FormsCharles.wx.wx.zip" );
 if($src)
 {
 	echo "上传成功<br>";
@@ -32,7 +35,7 @@ img{
 </style>
 </head>
 <body>
-<img src="<?=$src?>" />
-
+<img src="<?=$src?>" /><br>
+<a href="index.php">返回首页</a>
 </body>
 </html>
