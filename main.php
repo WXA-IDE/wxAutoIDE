@@ -18,6 +18,7 @@ img{
 include 'lib/wxLogin.class.php';
 $wxLogin = new wxLogin();
 $wlN = $wxLogin->getLoginState($_GET['uuid']);
+// echo $wlN["window.wx_errcode"];
 if($wlN["window.wx_errcode"]==$wxLogin::STATE_CONFIRM){
 	$wxCode = $wlN["window.wx_code"];
 	$wxCode = trim( $wxCode, "'" );
@@ -27,17 +28,18 @@ if($wlN["window.wx_errcode"]==$wxLogin::STATE_CONFIRM){
 	$show .=	"<a href=\"upload.php?newTicket={$userInfo['userInfo']['Debugger-NewTicket']}\">点击上传wxapp目录</a>";
 	if( !$userInfo ){
 		$show = "重复授权，请返回再次重试<br>";
-		$show .= "<a href=\"index.php\">返回</a>";
+		$show .= "<a href=\"index.php \">返回</a>";
 	}
 }elseif($wlN["window.wx_errcode"]==$wxLogin::STATE_WAIT_CONFIRM){
 	$show = "你扫描了二维码，但是未点击确认<br>";
 	$show .= "<a href=\"index.php?uuid={$_GET['uuid']}\">返回</a>";
-}
-elseif($wlN["window.wx_errcode"]==$wxLogin::STATE_CANCEL){
+}elseif($wlN["window.wx_errcode"]==$wxLogin::STATE_CANCEL){
 	$show = "你取消了登陆<br>";
 	$show .= "<a href=\"index.php?uuid={$_GET['uuid']}\">返回</a>";
-}
-else{
+}elseif($wlN["window.wx_errcode"]==$wxLogin::STATE_REFRESH){
+	$show = "二维码实效，请刷新后再试<br>";
+	$show .= "<a href=\"index.php\">刷新</a>";
+}else{
 	$show = "你尚未扫码登陆<br>";
 	$show .= "<a href=\"index.php?uuid={$_GET['uuid']}\">返回</a>";
 }
