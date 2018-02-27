@@ -1,0 +1,38 @@
+{
+  "extEnable": false,
+  "extAppid": "wx2cd5e0f3147f11b6",
+  "ext": {
+    "name": "深圳青廷科技",
+    "background": "#008E42",
+    "color": "#008E42",
+    "publicid": 84
+  },
+  "extPages": {},
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#008E42",
+    "navigationBarTitleText": "深圳青廷科技",
+    "navigationBarTextStyle": "white"
+  },
+
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#008E42",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/content/list/index",
+        "iconPath": "icon/home.png",
+        "selectedIconPath": "icon/qingting_home.png",
+        "text": "资讯"
+      },
+      {
+        "pagePath": "pages/tongcheng/index",
+        "iconPath": "icon/wode.png",
+        "selectedIconPath": "icon/qingting_wode.png",
+        "text": "钱包"
+      }
+    ]
+  }
+}

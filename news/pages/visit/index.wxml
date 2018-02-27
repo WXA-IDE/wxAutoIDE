@@ -1,0 +1,37 @@
+ <form bindsubmit="submit">
+ <view class="weui-cells__title">预约</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">联系人*</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="name" value="{{ form.name }}"  placeholder="请输入联系人姓名"/>
+                </view>
+            </view>
+
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">电话*</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="phone" value="{{ form.phone }}"  placeholder="请输入联系方式"/>
+                </view>
+            </view>
+
+
+        <view class="weui-cells__title">备注</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea"  placeholder="可在此留下您的需求，方便我们为您提供更好服务" value="{{ form.remark }}" style="height: 3.3em" bindinput="bindRemarkChange"/>
+                </view>
+            </view>
+        </view>
+        </view>
+        <view class="weui-cells__tips">我们的客服人员将第一时间与您联系，请注意接听电话</view>
+
+    <view class="page__bd page__bd_spacing">
+        <button loading="{{loading}}" class="weui-btn" type="primary" formType="submit" style="background-color:{{background || ''}}">确认预约</button>
+        </view>
+        </form>

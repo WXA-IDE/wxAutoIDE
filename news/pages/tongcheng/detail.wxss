@@ -1,0 +1,139 @@
+.header{
+	padding: 60rpx 0;
+    background-image: radial-gradient(ellipse at top, #FF8C00, #FF7647 ,#FFA500);
+    color: white;
+    text-align: center;
+    font-size: 30rpx;
+    display: flex;
+    flex-direction: column;
+}
+.header .title{
+	font-size: 26rpx;
+	opacity: 0.7;
+}
+.header .num{
+	font-size: 60rpx;
+	margin-top: 15rpx;
+}
+.header .mall{
+	margin-top: 30rpx;
+}
+.header .mall text{
+	border: 1px solid #FFCC9E;
+	padding: 7rpx 25rpx;
+	border-radius: 40rpx;
+	opacity: 0.7;
+}
+.transit{
+	height: 30rpx;
+	background-color: #F8F8F8;
+}
+.gain .reward{
+	height: 150rpx;
+	border-bottom: 1px solid #E8E8E8;
+}
+.gain .control{
+	padding: 20rpx 30rpx;
+}
+.gain .title{
+	float: left;
+}
+.gain .word{
+	font-size: 32rpx;
+	margin-top: 10rpx;
+}
+.gain .date{
+	margin-top: 15rpx;
+	font-size: 26rpx;
+	color: #B0B0B0;
+}
+.gain .number{
+	float: right;
+	line-height: 110rpx;
+	margin-right: 20rpx;
+	font-size: 28rpx;
+	color: #FF613F;
+}
+.gain .num{
+	font-size: 46rpx;
+}
+.gain .reward .title{
+	display: flex;
+	flex-direction: column;
+}
+.gain .tip{
+	font-size: 26rpx;
+	color: #B0B0B0;
+	margin: 50rpx 0;
+	text-align: center;
+}
+.gain .tip text{
+	display: inline-block;
+	padding: 0 20rpx;
+}
+.none{
+	margin-top: 40rpx;
+	text-align: center;
+	font-size: 30rpx;
+}
+
+
+.pain{
+	padding:0 8rpx 25rpx 25rpx;
+} 
+.pain .type{
+	display: flex;
+	border-bottom: 1px solid #D0D0D0;
+	padding: 25rpx 0;
+}
+.pain .type .img{
+	width: 150rpx;
+	height: 150rpx;
+}
+.pain .type .center{
+	display: flex;
+	flex-direction: column;
+	margin-left: 30rpx;
+	width: 440rpx;
+}
+.pain .type .top{
+	font-size: 30rpx;
+	color: #707070;
+}
+.pain .type .under{
+	margin-top: 30rpx;
+	font-size: 34rpx;
+	color: #EAA2A7;
+}
+.pain .type .under .small{
+	font-size: 24rpx;
+	color: #C0C0C0;
+	text-decoration: line-through;
+}
+.pain .type .num{
+	line-height: 150rpx;
+	margin-left: 35rpx;
+	font-size: 36rpx;
+}
+
+.bar{
+	height: 120rpx;
+	line-height: 120rpx;
+	display: flex;
+	text-align: center;
+	font-size: 30rpx;
+	border-bottom: 1px solid #E8E8E8;
+}
+.bar view{
+	flex-grow: 1;
+}
+.bar .normal{
+	padding: 38rpx 60rpx;
+}
+.bar .current{
+	border-bottom: 2px solid #F0F0F0;
+	color: #FE6341;
+}
+
+
+

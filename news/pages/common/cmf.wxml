@@ -1,0 +1,111 @@
+
+<template name="articleList">
+
+    <!--常规-->
+    <block wx:for="{{articles}}" wx:for-index="index" wx:key="id">
+
+        <!--wx:if="{{product.show_type == 2}}"-->
+        <view class="list_content" bindtap="bindShowArticle" wx:if="{{item.show_type == '0' && !item.smeta.photo.length  }}"  data-id="{{item.id}}" data-url="{{item.url}}">
+            <view class="list_max">
+                <view class="list_img">
+                    <image class="list_img" src="{{item.smeta.thumb}}"></image>
+                </view>
+                <view class="list_txet list_flex">
+                    <view class="list_title">{{item.post_title}}</view>
+
+                    
+                    <view class="list_com_text">
+                        <view class="list_txet_one list_top">{{item.post_date}}</view>
+                        <view class="list_banner  list-tag" wx:if="{{item.post_keyword.length > 0}}" wx:for="{{item.post_keyword}}" wx:key="index" wx:for-item="keyword">{{keyword}}</view>
+                        <view class="list_text_r list_top list_flex" wx:if="{{item.post_source}}">{{item.post_source}}</view>
+                       <view class="top list_top" wx:if="{{item.istop == '1'}}">置顶</view>
+                    <view class="top list_top" wx:if="{{item.recommended == '1'}}">推荐</view>
+
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!--多图-->
+        <view class="list_content" bindtap="bindShowArticle" wx:if="{{item.show_type == '0' && item.smeta.photo.length>1 }}" data-id="{{item.id}}" data-url="{{item.url}}">
+            <view class="list-head">
+            <view class="list_main_title">{{item.post_title}}</view>
+            <view class="top" wx:if="{{item.istop == '1'}}">置顶</view>
+            <view class="top" wx:if="{{item.recommended == '1'}}">推荐</view>
+            </view>
+            <view class="list_more_img">
+                <image class="more_img" src="{{photo.url}}" wx:for="{{item.smeta.photo}}" wx:key="*this"  wx:for-item="photo"></image>
+            </view>
+            <view class="list_main_text">
+                <view class="list_txet_one  list_top">{{item.post_date}}</view>
+                <view class="list_banner   list-tag" wx:if="{{item.post_keyword.length > 0}}" wx:for="{{item.post_keyword}}" wx:key="index" wx:for-item="keyword">{{keyword}}</view>
+                <view class="list_text_r list_top list_flex" wx:if="{{item.post_source}}">{{item.post_source}}</view>
+
+            </view>
+        </view>
+
+        <!--大图-->
+        <view class="list_content" bindtap="bindShowArticle" wx:if="{{item.show_type == '1'}}" data-id="{{item.id}}" data-url="{{item.url}}">
+            <view class="list-head">
+                <view class="list_main_title">{{item.post_title}}</view>
+                <view class="top" wx:if="{{item.istop == '1'}}">置顶</view>
+                <view class="top" wx:if="{{item.recommended == '1'}}">推荐</view>
+            </view>
+            <view class="list_bigimg">
+                <image class="list_bigimg" src="{{item.smeta.thumb}}" mode="aspectFill"></image>
+            </view>
+            <view class="list_main_text">
+                <view class="list_txet_one list_top">{{item.post_date}}</view>
+                <view class="list_banner  list-tag" wx:if="{{item.post_keyword.length > 0}}" wx:for="{{item.post_keyword}}" wx:key="index" wx:for-item="keyword">{{keyword}}</view>
+                <view class="list_text_r list_top list_flex" wx:if="{{item.post_source}}">{{item.post_source}}</view>
+                
+            </view>
+        </view>
+
+
+    </block>
+</template>
+
+<template name="graphic">
+  
+   <view class="graphic-container">
+    <block wx:for="{{nav}}" wx:for-item="item" wx:key="id">
+        <navigator url="{{item.url}}" class="graphic">
+          <view class="graphic-block">  
+            <view class="graphic-text">
+              <view class="graphic-text-name">{{item.title}}</view>
+               <view class="graphic-text-wz">{{item.description}}</view>
+               <!-- <view class="graphic-text-btn">{{item.tag}}</view> -->
+            </view>
+              <image  class="graphic-image"   src="{{item.cover}}"></image>
+            
+
+          </view>
+        </navigator> 
+      </block>
+    </view>
+
+</template>
+
+
+<import src="wxParse.wxml" />
+<template name="detail" data="{{article, content}}">
+<view class="container-f">
+    <view class="article-head">
+        <!--<view class="article-headimg"><image class="article-headimg"  src="{{article.smeta.thumb}}" mode="aspectFill"></image></view>-->
+        <view class="article-title">{{article.post_title}}</view>
+        <view class="article-text"><view class="article-time">{{article.post_date}}</view><view>{{article.post_source}}</view></view>
+    </view>
+    <view class="article-content">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+
+   <view wx:if="{{article.tel}}" bindtap="callTel" data-tel="{{article.tel}}" ><image  class="article-icon-tel" src="../../../images/icon_phone.png"></image>联系电话：{{article.tel}}</view>
+    </view>
+
+
+       <view class="article-read"><text class="read-number" wx:if="{{article.post_hits}}">阅读数:{{article.post_hits}}</text></view>
+</view>
+
+</template>
+
+

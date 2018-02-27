@@ -1,0 +1,22 @@
+<template name="prompt">
+    <view class="prompt-container" hidden="{{ prompt.hidden }}">
+        <view class="prompt-message">
+            <view  class="">
+                <view class=" iconfont {{ prompt.icon || 'icon-empty' }}" style="font-size: 48px"></view> 
+            </view>
+            <view class="prompt-title">{{ prompt.title || '空空如也' }}</view>
+            <view class="prompt-text">{{ prompt.text || '' }}</view>
+        </view>
+    </view>
+</template>
+<template name="loading">
+    <view class="weui-loadmore " hidden="{{hidden}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips ">正在加载~</view>
+    </view>
+
+    <view class="weui-loadmore weui-loadmore_line" hidden="{{noMoreHidden}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line" style="background:#f7f7f7;">更多精彩敬请期待</view>
+    </view>
+
+</template>

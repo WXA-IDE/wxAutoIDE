@@ -1,0 +1,58 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.8",
+	"appid": "wxbb981ccb50e3d42d",
+	"projectname": "upload",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "详情",
+					"pathName": "pages/content/details/index",
+					"query": "id=323&cid=-1"
+				},
+				{
+					"id": -1,
+					"name": "钱包",
+					"pathName": "pages/tongcheng/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "金豆明细",
+					"pathName": "pages/tongcheng/detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "详情",
+					"pathName": "pages/content/details/index",
+					"query": "id=323&cid=-1"
+				}
+			]
+		}
+	}
+}

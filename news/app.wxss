@@ -1,0 +1,55 @@
+page {
+  background-color: white;
+  font-family: "STHeiti"
+}
+.navigator-hover{
+  color: limegreen;
+}
+
+
+/*获得金豆显示样式*/
+
+.getJindou {
+    position: absolute;
+    background-color: #434343;
+    top: 400rpx;
+    left: 100rpx;
+    min-height: 300rpx;
+    width: 560rpx;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    font-weight: lighter;
+    font-size: 30rpx;
+    line-height: 60rpx;
+    color: white;
+}
+
+.getJindou .icon {
+    display: inline-block;
+    color: #FFB802;
+    font-size: 60rpx;
+}
+
+.getJindou .num {
+    color: #E1593B;
+}
+
+.getJindou .icon-close {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    font-size: 50rpx;
+    /*color:#434343;*/
+
+}
+
+@import 'style/iconfont.wxss';
+@import 'assets/styles/iconfont.wxss';
+@import 'assets/styles/weui.wxss';
+@import 'assets/styles/style.wxss';
+@import "assets/styles/wxParse.wxss";

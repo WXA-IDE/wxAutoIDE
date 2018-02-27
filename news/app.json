@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/content/list/index",
+    "pages/content/details/index",
+    "pages/help/list/index",
+    "pages/user/index",
+    "pages/login/index",
+    "pages/visit/index",
+    "pages/tongcheng/index",
+    "pages/tongcheng/detail",
+    "pages/tongcheng/award",
+    "pages/tongcheng/invite"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#008E42",
+    "navigationBarTitleText": "深圳青廷科技",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#008E42",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/content/list/index",
+        "iconPath": "icon/home.png",
+        "selectedIconPath": "icon/qingting_home.png",
+        "text": "资讯"
+      },
+      {
+        "pagePath": "pages/tongcheng/index",
+        "iconPath": "icon/wode.png",
+        "selectedIconPath": "icon/qingting_wode.png",
+        "text": "钱包"
+      }
+    ]
+  }
+}

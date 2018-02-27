@@ -1,0 +1,22 @@
+
+
+@import '../../../assets/styles/onlinemm.wxss';
+
+.article-icon-tel{
+	position: relative;
+	top: 6rpx;
+	width: 40rpx;
+	height: 40rpx;
+	margin-left: 20rpx;
+}
+
+
+.tabBar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: #fff;
+}

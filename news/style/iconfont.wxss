@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 564557 */
+  src: url('//at.alicdn.com/t/font_564557_3ow1zdu9pj9bpgb9.eot');
+  src: url('//at.alicdn.com/t/font_564557_3ow1zdu9pj9bpgb9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_564557_3ow1zdu9pj9bpgb9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_564557_3ow1zdu9pj9bpgb9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_564557_3ow1zdu9pj9bpgb9.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size: 50rpx; 
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon_wode:before { content: "\e658";}
+
+.icon_shouye:before { content: "\e699";}
+
+.icon_laba:before { content: "\e6ec";}
+
+.icon_fenxiang:before { content: "\e63f";}
+
+.icon_book:before { content: "\e62d";}
+
+.icon_jindou:before { content: "\e602";}
+
+.icon_pengyouquan:before { content: "\e619";}
+
+.icon_share:before { content: "\e676";}
+
+.icon_jia:before { content: "\e632";}
+
+.icon_erweima:before { content: "\e642";}
+
+
+
+
+
+
