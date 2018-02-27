@@ -2,18 +2,23 @@
 include 'lib/wxPacker.class.php';
 include 'lib/wxUpload.class.php';
 
-$InputFolder = "dist";
-$appid = "wxbb981ccb50e3d42d";
+$InputFolder = "news";
+$appid = "wx6fdfc32bedf1ecc8";//PLSC
+// $appid = "wxbb981ccb50e3d42d";//京
 $userVersion = "1.0.1";
 $userDesc = "666";
 
 $wxPacker = new wxPacker( $InputFolder );
-$pack = $wxPacker->getPack();
+$pack = $wxPacker->Gzip()->ES625()->getPack();
 
 $newTicket = $_GET['newTicket'];
 $wxUpload = new wxUpload( $newTicket, $appid  );
-$src = $wxUpload->upload( $pack, $userVersion, $userDesc );
-// $src = $wxUpload->uploadFile( "FormsCharles.wx.wx.zip" );
+// $src = $wxUpload->preView( $pack );
+$src = $wxUpload->upload( $pack, $userVersion, $userDesc );exit("可能上传成功，请去后台查看。如果不行，请先用preView测试");
+
+
+
+
 if($src)
 {
 	echo "上传成功<br>";
@@ -39,7 +44,8 @@ img{
 </head>
 <body>
 	<!-- 预览才返回二维码，上传不返回二维码 -->
-<!-- <img src="<?=$src?>" /><br> -->
+<img src="<?=$src?>" /><br>
 <a href="index.php">返回首页</a>
+<h1>如果失败，请先   npm install --save</h1>
 </body>
 </html>

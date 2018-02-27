@@ -3,24 +3,24 @@
  * Editing
  * 微信小程序打包器
  *
- * @Ver 1.0.200
- * @Date 18.02.27 12:14
+ * @Ver 1.1.0
+ * @Date 18.02.27 19:16
  * @TODO 支持压缩包文件
  */
 
 interface wxPackerInterface
 {
-	//@ 只返回微信小程序压缩包，不压缩
+	//@ 进行Gzip压缩
+	public function Gzip( $savePath );
+
+	//@ 进行ES6 to ES5
+	public function ES625( $savePath );
+	//@ 返回微信小程序压缩包
 	public function getPack();
 
-	//@ 只返回微信小程序压缩包并压缩
-	public function getPackNoGzip();
-
-	//@ 只保存微信小程序压缩包，不压缩
+	//@ 保存微信小程序压缩包
 	public function savePack( $savePath );
 
-	//@ 只返回微信小程序压缩包并压缩
-	public function savePackNoGzip( $savePath );
 }
 
 class wxPacker
@@ -34,17 +34,15 @@ class wxPacker
 	public $indexLength;
 	public $body;
 
+	public $gzip;
+	public $ecmas;
+
 	public function __construct($path){
 		$this->path = $path;
 	}
 
 	//生成wxapp压缩包
 	public function getPack(){
-		$wxPack = self::configure( true );
-		return $wxPack;
-	}
-
-	public function getPackNoGzip(){
 		$wxPack = self::configure();
 		return $wxPack;
 	}
@@ -54,19 +52,22 @@ class wxPacker
 		// if( empty($savePath) || is_file($savePath) )
 		if( empty($savePath) )
 			return false;
-		$wxPack = self::configure( true );
-		return file_put_contents( $savePath, $wxPack ) ? true : false;
-	}
-
-	public function savePackNoGzip( $savePath ){
-		// if( empty($savePath) || is_file($savePath) )
-		if( empty($savePath) )
-			return false;
 		$wxPack = self::configure();
 		return file_put_contents( $savePath, $wxPack ) ? true : false;
 	}
 
-	private function configure( $gzip = false ){
+	public function Gzip(){
+		$this->gzip = true;
+		return $this;
+	}
+
+	public function ES625(){
+		$this->ecmas = true;
+		return $this;
+	}
+
+	private function configure( ){
+		$this->ecmas && self::ECMAScript6To5( $this->path );
 		$this->indexLength = 0;
 		$this->body = "";
 		$files = self::get_all_files( $this->path );
@@ -77,7 +78,14 @@ class wxPacker
 		];
 		$wxPack = self::make( $head, $files );
 		// return $wxPack ;
-		return $gzip ? gzencode( $wxPack ) : $wxPack;
+		return $this->gzip ? gzencode( $wxPack ) : $wxPack;
+	}
+
+	private function ECMAScript6To5( $path ){
+		$command = "npx babel {$path} -d {$path}_es5 --copy-files";
+		exec( $command, $return );
+		$this->path = $this->path . "_es5";
+		return $return;
 	}
 
 	private function make( $_head, $files ){

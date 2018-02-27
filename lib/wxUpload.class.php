@@ -15,11 +15,11 @@ class wxUpload
     public $appid;
 
 
-    public function perView( $fileMemory ){
+    public function preview( $fileMemory ){
         return self::_upload( $fileMemory );
     }
 
-    public function perViewFile( $filePath ){
+    public function previewFile( $filePath ){
         $file = file_get_contents("wxapp.wx");
         return self::_upload( $filePath );
     }
@@ -34,9 +34,9 @@ class wxUpload
     }
 
     private function _upload( $file, $offical=false, $userVersion=false, $userDesc=false ){
-        $perView = "https://servicewechat.com/wxa-dev/testsource";
+        $preview = "https://servicewechat.com/wxa-dev/testsource";
         $upload = "https://servicewechat.com/wxa-dev/commitsource";
-        $baseUrl = !$offical ? $perView : $upload;
+        $baseUrl = !$offical ? $preview : $upload;
         $map["_r"] = "0." . self::getRand(17);
         $map["appid"] = $this->appid;
         $map["platform"] = "1";
@@ -50,7 +50,7 @@ class wxUpload
         $map["newticket"] = $this->newticket;
         $url = self::makeUrl( $baseUrl, $map ) . "clientversion=1.02.1802080";
         $return = $this->post( $url, $file, false, 1 );
-    echo $return;
+echo $return;
         if( !$return ){
             $this->error = "上传出错，服务器返回空。可能是gZip配置问题";
             return false;
