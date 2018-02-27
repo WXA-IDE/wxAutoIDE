@@ -1,0 +1,54 @@
+<import src="../common/prompt.wxml"/>
+<view class="bar">
+    <view bindtap="changeBar" class="bars">
+        <text class="{{ show_toInvite ? 'current' : '' }} normal">邀请好友</text>
+    </view>
+    <view bindtap="changeBar" class="bars">
+        <text class="{{ show_toInvite ? '' : 'current' }} normal">我邀请的好友</text>
+    </view>
+</view>
+<view class="toInvite" style="display:{{ show_toInvite ? '' : 'none' }}">
+    <view class="link">
+        <view class="left">
+            <view class="control">
+                <button class="icon  ">
+                    <text class="icon_pengyouquan iconfont ic1" style="margin-left: -10rpx;"></text>
+                </button>
+            </view>
+            <view class="word">微信好友邀请</view>
+        </view>
+        <view class="right">
+            <view class="control">
+                <text class="icon icon_erweima iconfont ic2"></text>
+            </view>
+            <view class="word">面对面邀请</view>
+        </view>
+    </view>
+    <view class="explain">
+        <view class="title">邀请好友赚收益</view>
+        <view class="content">
+        <template is="detail" data="{{article, content}}" />
+        </view>
+    </view>
+</view>
+<view class="mineInvite" style="display:{{ show_toInvite ? 'none' : '' }}">
+    <view class="control">
+        <view class="top normal">
+            <view class="title">已邀请好友
+                <text class="num">0</text>人</view>
+            <view class="word">最新加入</view>
+            <view class="flex container-list-content" wx:for="{{list}}" wx:key="{{item.id}}">
+                <image class="container-list-headimg" src="{{item.cover}}"></image>
+                <view class="container-list-name flex1">{{item.name}}</view>
+                <view class="box-btm" bindtap="del" data-id="{{item.id}}" data-index="{{index}}">删除</view>
+            </view>
+            <template is="prompt" data="{{ prompt }}" />
+            <template is="loading" data="{{hidden, noMoreHidden}}" />
+        </view>
+        <view class="under normal">
+            <view class="title">已邀请二级好友
+                <text class="num">0</text>人</view>
+            <view class="word">最新加入</view>
+        </view>
+    </view>
+</view>

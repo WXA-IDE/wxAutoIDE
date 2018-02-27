@@ -1,0 +1,112 @@
+.bar{
+	height: 100rpx;
+	background-color: #F9F9F9;
+	line-height: 100rpx;
+	text-align: center;
+	font-size: 30rpx;
+}
+.bar .bars{
+	float: left;
+	width: 50%;
+}
+.bar .normal{
+	padding: 26rpx 30rpx;
+}
+.bar .current{
+	border-bottom: 2px solid #FE6341;
+	color: #FE6341;
+}
+.toInvite .link{
+	height: 300rpx;
+	border-bottom: 1px solid #D8D8D8;
+}
+.toInvite .link .left,.toInvite .link .right{
+	float: left;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
+.toInvite .link .control{
+	margin: 50rpx 0 0 135rpx;
+}
+.toInvite .link .icon{
+	display: inline-block;
+	font-size: 74rpx;
+	background-color: #19CB01;
+	border-radius: 50%;
+	color: white;
+	width: 120rpx;
+	height: 120rpx;
+	text-align: center;
+	line-height: 120rpx;
+}
+.toInvite .link .word{
+	text-align: center;
+	margin-top: 40rpx;
+	font-size: 30rpx;
+}
+.toInvite .link .ic1{
+	font-size: 90rpx;
+}
+.toInvite .link .ic2{
+	background-color: #7A8185;
+}
+.toInvite .explain .title{
+	text-align: center;
+	margin: 60rpx 0;
+	font-size: 34rpx;
+}
+
+
+.mineInvite .control{
+	padding: 0 40rpx;
+}
+.mineInvite .control .normal{
+	padding: 60rpx 0;
+	border-bottom: 1px solid #E0E0E0;
+}
+.mineInvite .normal .num{
+	color: #FF5833;
+	font-size: 48rpx;
+}
+.mineInvite .normal .title{
+	font-size: 30rpx;
+}
+.mineInvite .normal .word{
+	font-size: 26rpx;
+	color: #B0B0B0;
+	margin: 50rpx 0 30rpx 0;
+}
+
+
+.container-list-content{
+	padding: 20rpx;
+}
+.container-list-name{
+   font-size: 24rpx;
+   line-height: 48rpx;
+   color: #484443;
+}
+.container-list-title{
+	background-color: #fff;
+	padding: 20rpx;
+	border-bottom: 1px solid #eeeeee;
+}
+.container-list-headimg{
+	width:48rpx;
+	height: 48rpx;
+	margin-right: 20rpx;
+	border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+

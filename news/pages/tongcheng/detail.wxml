@@ -1,0 +1,51 @@
+<import src="../common/prompt.wxml" />
+<view class="header">
+    <view class="title">可用金豆</view>
+    <view class="num">{{ config.score }}</view>
+</view>
+<view class="transit"></view>
+<view class="bar">
+    <view bindtap="changeBar">
+        <text class="{{ show_gain ? 'current' : '' }} normal">金豆记录</text>
+    </view>
+    <view bindtap="changeBar">
+        <text class="{{ show_gain ? '' : 'current' }} normal">消耗明细</text>
+    </view>
+</view>
+<view class="gain" style="display:{{ show_gain ? '' : 'none' }}">
+    <view wx:if="{{ score.items.length > 0 }}">
+        <view class="reward" wx:for="{{ score.items }}" wx:key="gain">
+            <view class="control">
+                <view class="title">
+                    <view class="word">{{ item.credit_title }}</view>
+                    <view class="date">{{ item.cTime }}</view>
+                </view>
+                <view class="number">+
+                    <text class="num">{{ item.score }}</text> 金豆</view>
+            </view>
+        </view>
+    </view>
+    <template is="prompt" data="{{prompt}}" />
+    <template is="loading" data="{{hidden, noMoreHidden}}" />
+    <view class="tip">
+        ——
+        <text>仅显示最近三天的金币明细</text> ——
+    </view>
+</view>
+<view class="pain" style="display:{{ show_gain ? 'none' : '' }}">
+    <view class="type" wx:for="{{ order.items }}" wx:key="pain_t1">
+        <image src="{{ item.cover }}" class="img" mode="scaleToFill" />
+        <view class="center">
+            <view class="top">{{ item.title }}</view>
+            <view class="under">
+                {{ item.score }}积分
+                <text style="display:{{ item.true_price ? '' : 'none' }}"> + ￥{{ item.true_price }}
+                    <text class="small">原价：￥{{ item.price }}</text>
+                </text>
+            </view>
+        </view>
+        <view class="num">×1</view>
+    </view>
+    <template is="prompt" data="{{prompt}}" />
+    <template is="loading" data="{{hidden, noMoreHidden}}" />
+</view>

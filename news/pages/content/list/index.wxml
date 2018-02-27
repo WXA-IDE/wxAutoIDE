@@ -1,0 +1,37 @@
+<import src="../../common/cmf.wxml" />
+<import src="../../common/prompt.wxml" />
+<view class="zan-tab">
+    <block>
+        <!-- zan-tab__bd--fixed -->
+        <scroll-view class="zan-tab__bd zan-tab__bd--scroll zan-tab__bd--fixed" scroll-x="true" style="height: {{ tab.height ? tab.height + 'px' : 'auto' }}" scroll-left="{{tab.index*80}}" scroll-with-animation>
+            <view wx:for="{{category}}" wx:key="id" class="zan-tab__item {{tab.index == index ? 'zan-tab__item--selected' : ''}}" data-id="{{item.id}}" data-alias="{{item.taxonomy}}" data-index="{{index}}" bindtap="handleZanTabChange">
+                <view class="zan-tab__title">{{item.name}}</view>
+            </view>
+        </scroll-view>
+    </block>
+    <swiper style="height: {{winHeight - tab.height}}px;margin-top: {{tab.height}}px;" bindchange="changePage" current="{{tab.index}}">
+        <block wx:for="{{category}}" wx:key="">
+            <swiper-item id="test{{index}}">
+                <scroll-view scroll-y style="height: {{winHeight - tab.height}}px;" bindscrolltolower="lower" scroll-top="{{scrollTop}}" scroll-into-view="{{viewId}}">
+                    <view id="content-view">
+                        <swiper style="height:410rpx;" indicator-dots="true" autoplay="true" interval="5000" duration="1000" wx:if="{{bucket[index].slides.length}}">
+                            <block wx:for="{{bucket[index].slides}}" wx:for-item="slide" wx:key="id">
+                                <swiper-item>
+                                    <navigator url="{{slide.slide_url}}">
+                                        <image class="slide-img" src="{{slide.cover}}" mode="scaleToFill" />
+                                    </navigator>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                    <template is="articleList" data="{{articles:bucket[index].articles.items}}" />
+                    <template is="prompt" data="{{prompt:bucket[index].prompt}}" />
+                    <template is="loading" data="{{hidden: bucket[index].hidden, noMoreHidden: bucket[index].noMoreHidden}}" />
+                </scroll-view>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view  bindtap="refresh" style="position: absolute; width: 100rpx;height: 100rpx;border-radius: 50%; right: 75rpx; bottom: 200rpx;background-color: #fff;">
+    <view class="iconfont icon-shuaxin"  style="color: red;font-size: 60rpx; margin-left:18rpx;"></view>
+</view>
+</view>

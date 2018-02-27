@@ -1,0 +1,44 @@
+<scroll-view scroll-y="true" class="scr_head">
+    <view class="awardImg">
+        <view><text class="imgNum">{{ award.num }}</text>元</view>
+    </view>
+    <view class="head_title">
+        <view class="control">
+            <view class="name">{{ award.num }}元手机充值卡</view>
+            <view class="price">
+                <view class="discount_price">
+                    优惠价<text class="inter">:</text>
+                    <text class="num">{{ award.discount_price }}</text>金豆
+                </view>
+                <view class="origin_price">
+                    原价<text class="inter">:</text>
+                    <text class="num">{{ award.origin_price }}</text>金豆
+                </view>  
+            </view>
+        </view>
+    </view>
+    <view class="introduce">
+        <view class="control">
+            <view class="title">
+                <text class="icon"></text><text class="word">商品介绍</text>
+            </view>
+            <view class="detail">{{ award.introduce }}</view>
+        </view>
+    </view>
+    <view class="explain">
+        <view class="control">
+             <view class="title">
+                <text class="icon"></text><text class="word">兑换说明</text>
+            </view>
+            <view class="detail">{{ award.explain }}</view>
+        </view>
+    </view>
+</scroll-view>
+
+<view class="underBar">
+    <view class="add">我的金豆:<text class="num">{{ jindou }}</text></view>
+    <button class="change {{ changeStatus ? 'able' : '' }} ">兑换</button>
+</view>
+
+
+

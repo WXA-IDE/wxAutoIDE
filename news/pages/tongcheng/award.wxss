@@ -1,0 +1,125 @@
+.awardImg{
+    height: 350rpx;
+    text-align: center;
+    line-height: 350rpx;
+    font-size: 50rpx;
+    color: white;
+    background-color: #D8D8D8;
+}
+.awardImg .imgNum{
+    font-size: 80rpx;
+}
+.control{
+    padding: 0 20rpx;
+}
+.head_title{
+    padding-bottom: 60rpx;
+    border-bottom: 1px solid #E8E8E8;
+}
+.head_title .name{
+    margin-top: 30rpx;
+    font-size: 34rpx;
+}
+.head_title .price{
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    display: flex;
+}
+.head_title .price .inter{
+    margin: 0 10rpx;
+}
+.head_title .price .num{
+    font-size: 40rpx;
+}
+.head_title .discount_price{
+    color: #FF684B;
+    margin-right: 60rpx;
+}
+.head_title .origin_price{
+    text-decoration: line-through;
+    color: #9F9F9F;
+}
+.introduce{
+    margin-top: 40rpx;
+    padding-bottom: 40rpx;
+    border-bottom: 1px solid #E0E0E0;
+}
+.introduce .title .icon{
+    width: 5rpx;
+    height: 36rpx;
+    background-color: #1A94E5;
+    margin-right: 10rpx;
+    margin-top: 6rpx;
+    float: left;
+}
+.introduce .title .word{
+    font-size: 34rpx;
+    color: #808080;
+}
+.introduce .detail{
+    margin-top: 30rpx;
+    color: #A5A5A5;
+    font-size: 28rpx;
+}
+.explain{
+    margin-top: 40rpx;
+}
+.explain .title .icon{
+    width: 5rpx;
+    height: 36rpx;
+    background-color: #E5641B;
+    margin-right: 10rpx;
+    margin-top: 6rpx;
+    float: left;
+}
+.explain .title .word{
+    font-size: 34rpx;
+    color: #808080;
+}
+.explain .detail{
+    margin-top: 30rpx;
+    color: #A5A5A5;
+    font-size: 28rpx;
+}
+
+
+
+
+
+/*底部Bar样式*/
+.underBar{
+    height: 100rpx;
+    position: fixed;
+    width: 100%;
+    bottom: 0rpx;
+    border-top: 1px solid #D4D4D4;
+    display: flex; 
+}
+.underBar .add{
+   line-height: 100rpx;
+   font-size: 26rpx;
+   margin-left: 40rpx;
+   width: 60%;
+}
+.underBar .add .num{
+   font-size: 38rpx;
+   display: inline-block;
+   margin-left: 10rpx;
+}
+.underBar .change{
+    background-color: #E0E0E0; 
+    width: 40%;
+    color: white;
+    border-radius: 0;
+    font-size: 30rpx;
+    line-height: 100rpx;
+}
+.underBar .able{
+    background-color: red;
+}
+
+
+
+
+
+

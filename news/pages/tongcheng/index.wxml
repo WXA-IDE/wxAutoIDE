@@ -1,0 +1,154 @@
+<view>
+    <scroll-view scroll-y="true" class="scr_head" style="height: {{scr_height}}px">
+        <view class="header">
+            <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}"></image>
+            <view class="message">
+                <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+                <view class="value">
+                    <text>金豆{{ config.total }}</text>
+                    <text>估值{{ config.total/1000 }}元</text>
+                </view>
+                <view class="other">
+                    <button class="register" loading="{{loading}}" disabled="{{loading}}" bindtap="SignIn_fn" style="display:{{ config.hasLog ? 'none' : '' }};">签到</button>
+                    <button class="register" style="display:{{ config.hasLog ? '' : 'none' }};">明日+{{ config.score }}</button>
+                    <view class="word">每日签到可得{{ config.score }}金豆</view>
+                </view>
+            </view>
+            <view class="detail" bindtap="toDetailPage">
+                <text class="icon_jindou iconfont icon"></text>
+                <text class="word">金豆明细</text>
+            </view>
+        </view>
+        <View class="tip_style">
+            <view class="tip control">新人专享礼,点击领取</view>
+        </View>
+        <view class="tip_style">
+            <view class="task control">
+                <view class="icon"></view>
+                <view class="word">每日任务赚金豆</view>
+                <view class="rule">金豆规则></view>
+            </view>
+        </view>
+        <view class="type">
+            <view class="control">
+                <view class="img">
+                    <text class="icon_laba iconfont icon icColor1"></text>
+                </view>
+                <view class="word">
+                    <view class="top">邀请好友金豆赚不停
+                        <text class="jindou icon_jindou iconfont"></text>
+                        <text class="num">+{{ award_total.inviteTotalNum }}</text>
+                    </view>
+                    <view class="under">分享给好友，让好友帮你赚豆</view>
+                </view>
+                <view class="but">
+                    <button bindtap="toInvite">去邀请</button>
+                </view>
+            </view>
+        </view>
+        <view class="type">
+            <view class="control">
+                <view class="img">
+                    <text class="icon_fenxiang iconfont icon icColor2"></text>
+                </view>
+                <view class="word">
+                    <view class="top">转发文章赢金豆
+                        <text class="jindou icon_jindou iconfont"></text>
+                        <text class="num">+{{ config.share_limit * config.share_score }}</text>
+                    </view>
+                    <view class="under">
+                        <view class="progress">
+                            <view style="width: {{ config.share_count/config.share_limit*100 }}%" class="pro_son"></view>
+                        </view>
+                        <view class="schedule">
+                            <text class="have">{{ config.share_count }}</text>/{{ config.share_limit }}</view>
+                    </view>
+                </view>
+                <view class="but">
+                    <button bindtap="toIndex">去转发</button>
+                </view>
+            </view>
+        </view>
+        <view class="type">
+            <view class="control">
+                <view class="img">
+                    <text class="icon_book iconfont icon icColor3"></text>
+                </view>
+                <view class="word">
+                    <view class="top">阅读赢金豆，前去阅读
+                        <text class="jindou icon_jindou iconfont"></text>
+                        <text class="num">+{{ config.read_limit * config.read_score }}</text>
+                    </view>
+                    <view class="under">
+                        <view class="progress">
+                            <view style="width: {{ config.read_count/config.read_limit*100}}%" class="pro_son"></view>
+                        </view>
+                        <view class="schedule">
+                            <text class="have">{{ config.read_count }}</text>/{{ config.read_limit }}</view>
+                    </view>
+                </view>
+                <view class="but">
+                    <button bindtap="toIndex">去阅读</button>
+                </view>
+            </view>
+        </view>
+        <view class="present">
+            <view class="control">
+                <view class="title">
+                    <view class="icon"></view>
+                    <view class="word">礼品兑换</view>
+                </view>
+                <scroll-view scroll-x="true" class="scr_x">
+                    <view class="card" wx:for="{{card}}" wx:key="card">
+                        <view class="top {{item.disable ? 'dis_top' : ''}}">
+                            <view>¥
+                                <text class="price">{{ item.price }}</text>
+                                <text class="word">{{ item.type }}</text>
+                            </view>
+                        </view>
+                        <view class="center">
+                            <view class="tain_left {{item.disable ? 'dis_left' : ''}}"></view>
+                            <view class="line {{item.disable ? 'dis_line' : ''}}"></view>
+                            <view class="tain_right {{item.disable ? 'dis_right' : ''}}"></view>
+                        </view>
+                        <view class="under {{item.disable ? 'dis_under' : ''}}">
+                            <view class="number {{item.disable ? 'dis_number' : ''}}">{{ item.number }}豆</view>
+                            <button class="but" wx:if="{{!item.disable}}" bindtap="toAwardPage" data-idx="{{index}}">兑换</button>
+                            <button class="but dis_but" wx:else>已售罄</button>
+                        </view>
+                    </view>
+                    <view class="more">
+                        <view>更多超值商品,</view>
+                        <view> 敬请期待--</view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<!-- 显示转发 -->
+<view class="invite {{ showInvite ? 'show_an_Invite' : '' }}" style="display:{{ showInvite ? '' : 'none' }};">
+    <view class="top">
+        <button open-type="share">
+            <text class="iconfont icon_share icon"></text>
+            <text class="title">分享给好友</text>
+            <text class="word">转发到聊天</text>
+        </button>
+        <button open-type="share">
+            <text class="iconfont icon_pengyouquan icon"></text>
+            <text class="title">生成朋友圈分享图</text>
+            <text class="word">长按保存图片后分享</text>
+        </button>
+    </view>
+    <view class="under" bindtap="cancelScreen">取消</view>
+</view>
+<view class="screenLock" bindtap="cancelScreen" style="display:{{ showInvite ? '' : 'none' }};"></view>
+<view class="getJindou" style="display:{{ showSigninGet ? '' : 'none' }};">
+    <view class="iconfont icon-close " bindtap="closeDialog"></view>
+    <text style="padding-top:25px;" class="icon_jindou iconfont icon"></text>
+    <view style="padding:50rpx;">
+        <scroll-view scroll-y style="height:300rpx; ">
+            <text>{{signin.info || '恭喜签到成功'}}</text>
+        </scroll-view>
+    </view>
+</view>

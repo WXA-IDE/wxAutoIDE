@@ -2,10 +2,10 @@
 include 'lib/wxPacker.class.php';
 include 'lib/wxUpload.class.php';
 
-$InputFolder = "wxapp";
-$appid = "wx6fdfc32bedf1ecc8";
-$userVersion = "1.0.3";
-$userDesc = "上传版本";
+$InputFolder = "dist";
+$appid = "wxbb981ccb50e3d42d";
+$userVersion = "1.0.1";
+$userDesc = "666";
 
 $wxPacker = new wxPacker( $InputFolder );
 $pack = $wxPacker->getPack();

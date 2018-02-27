@@ -1,0 +1,521 @@
+.header {
+    height: 200rpx;
+    background-image: radial-gradient(ellipse at top, #FF8C00, #FF7647, #FFA500);
+    display: flex;
+    padding: 50rpx 20rpx;
+}
+
+.header .userinfo-avatar {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+}
+
+.header .userinfo-nickname {
+    font-size: 34rpx;
+}
+
+.header .message {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-left: 15rpx;
+}
+
+.header .message .value {
+    margin-top: 10rpx;
+    font-size: 26rpx;
+    font-weight: lighter;
+    width: 350rpx;
+}
+
+.header .message .value text:first-child {
+    display: inline-block;
+    border-right: 1px solid white;
+    padding-right: 12rpx;
+}
+
+.header .message .value text:last-child {
+    margin-left: 12rpx;
+}
+
+.header .message .other {
+    position: absolute;
+    display: flex;
+    top: 210rpx;
+}
+
+.header .message .other .register {
+    height: 60rpx;
+    width: 180rpx;
+    border-radius: 40rpx;
+    line-height: 60rpx;
+    font-size: 30rpx;
+    color: #F96339;
+    background-color: #FFF0EA;
+}
+
+.header .message .other .word {
+    margin: 18rpx 0 0 10rpx;
+    font-size: 24rpx;
+    color: #FFBEAB;
+}
+
+.header .detail {
+    margin-left: 100rpx;
+}
+
+.header .detail .icon {
+    font-size: 34rpx;
+    color: #FEEDC4;
+}
+
+.header .detail .word {
+    display: inline-block;
+    margin-left: 10rpx;
+    font-size: 24rpx;
+    color: #FFE9E3;
+}
+
+.control {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.tip_style {
+    height: 110rpx;
+    border-bottom: 1px solid #E0E0E0;
+    display: flex;
+    align-items: center;
+}
+
+.tip_style .tip {
+    background-color: #FF5D39;
+    height: 80rpx;
+    vertical-align: middle;
+    color: white;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    font-weight: lighter;
+}
+
+.task {
+    line-height: 110rpx;
+}
+
+.task .icon {
+    width: 5rpx;
+    height: 36rpx;
+    background-color: #1492E5;
+    margin-right: 10rpx;
+    margin-top: 36rpx;
+    float: left;
+}
+
+.task .word {
+    font-size: 30rpx;
+    color: #787878;
+    float: left;
+}
+
+.task .rule {
+    font-size: 26rpx;
+    color: #D8D8D8;
+    float: right;
+}
+
+.type {
+    height: 150rpx;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.type .img {
+    height: 150rpx;
+    border-bottom: 1px solid #E0E0E0;
+    line-height: 150rpx;
+    margin-right: 10rpx;
+}
+
+.type .icon {
+    display: inline-block;
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    color: #F5F5F5;
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 40rpx;
+}
+
+.type .jindou {
+    display: inline-block;
+    font-size: 30rpx;
+    color: #FFC502;
+    margin: 0 5rpx;
+}
+
+.type .num {
+    font-size: 26rpx;
+    color: #FF7355;
+}
+
+.type .icColor1 {
+    background-color: #FDB93D;
+}
+
+.type .icColor2 {
+    background-color: #7AD3FA;
+}
+
+.type .icColor3 {
+    background-color: #81DB35;
+}
+
+.type view:not(:last-child) {
+    float: left;
+}
+
+.type .word {
+    margin-top: 30rpx;
+    line-height: 50rpx;
+    width: 440rpx;
+}
+
+.type .word .top {
+    font-size: 28rpx;
+}
+
+.type .word .under {
+    font-size: 22rpx;
+    color: #B0B0B0;
+    clear: left;
+}
+
+.progress {
+    margin-top: 20rpx;
+    width: 40%;
+    border: 1px solid #ECEBEC;
+    border-radius: 50rpx;
+    height: 10rpx;
+    position: relative;
+    overflow: hidden;
+    margin-right: 20rpx;
+    background-color: #ECEBEC;
+}
+
+.progress .pro_son {
+    background: linear-gradient(90deg, #FBD883 15%, #FAD06A 35%, #F8C139 55%, #FFA957 85%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10rpx;
+    border-radius: 50rpx 0 0 50rpx;
+}
+
+.schedule .have {
+    color: #FF6747;
+}
+
+.type .but {
+    float: right;
+    margin-top: 50rpx;
+}
+
+.type .but button {
+    color: white;
+    background-color: #F25836;
+    font-size: 24rpx;
+    width: 160rpx;
+    height: 60rpx;
+    border-radius: 50rpx;
+}
+
+.present {
+    height: 300rpx;
+    padding: 40rpx 0 30rpx 0;
+}
+
+.present .title {
+    display: flex;
+    font-size: 28rpx;
+    margin-bottom: 30rpx;
+}
+
+.present .title .icon {
+    width: 5rpx;
+    height: 36rpx;
+    background-color: #E5641B;
+    margin-right: 10rpx;
+}
+
+.scr_x {
+    white-space: nowrap;
+}
+
+.present .card {
+    font-size: 22rpx;
+    display: inline-block;
+    margin-right: 20rpx;
+}
+
+.present .card .price {
+    font-size: 36rpx;
+}
+
+.present .card .word {
+    margin-left: 20rpx;
+}
+
+.present .card .number {
+    color: #FF9B83;
+    margin-left: 30rpx;
+}
+
+.present .card .dis_number {
+    color: #D8D8D8;
+}
+
+.present .card .but {
+    color: #FF9B83;
+    border: 1px solid #FF9B83;
+    border-radius: 30rpx;
+    height: 60rpx;
+    width: 100rpx;
+    font-size: 24rpx;
+    line-height: 56rpx;
+    background-color: #FFF4EF;
+    padding: 0;
+    margin-top: 10rpx;
+}
+
+.present .card .dis_but {
+    color: #BBBBBB;
+    border: 1px solid #D5D5D5;
+    background-color: #F3F3F3;
+}
+
+.present .card .top {
+    height: 90rpx;
+    width: 290rpx;
+    border: 1px solid #F9C8AE;
+    border-bottom: 1px solid white;
+    line-height: 90rpx;
+    text-align: center;
+}
+
+.present .card .dis_top {
+    border: 1px solid #E8E8E8;
+    border-bottom: 1px solid white;
+}
+
+.present .card .center {
+    display: flex;
+}
+
+.present .card .center .tain_left {
+    transform: rotate(45deg);
+    width: 15rpx;
+    height: 15rpx;
+    border-top: 1px solid #F9C8AE;
+    border-right: 1px solid #F9C8AE;
+    margin-left: -7rpx;
+}
+
+.present .card .center .dis_left {
+    border-top: 1px solid #E8E8E8;
+    border-right: 1px solid #E8E8E8;
+}
+
+.present .card .center .line {
+    width: 242rpx;
+    height: 0rpx;
+    border: 1rpx dashed #F9C8AE;
+    margin: 7rpx 15rpx 0 15rpx;
+}
+
+.present .card .center .dis_line {
+    border: 1rpx dashed #E8E8E8;
+}
+
+.present .card .center .tain_right {
+    transform: rotate(225deg);
+    width: 15rpx;
+    height: 15rpx;
+    border-top: 1px solid #F9C8AE;
+    border-right: 1px solid #F9C8AE;
+}
+
+.present .card .center .dis_right {
+    border-top: 1px solid #E8E8E8;
+    border-right: 1px solid #E8E8E8;
+}
+
+.present .card .under {
+    display: flex;
+    height: 80rpx;
+    width: 290rpx;
+    border: 1px solid #F9C8AE;
+    border-top: 1px solid white;
+    background-color: #FFF4EF;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.present .card .dis_under {
+    border: 1px solid #E8E8E8;
+    background-color: #F8F8F8;
+    border-top: 1px solid white;
+}
+
+.present .more {
+    display: inline-block;
+    border: 1px solid #E8E8E8;
+    border-top: 1px solid white;
+    width: 290rpx;
+    height: 194rpx;
+    margin-top: -280rpx;
+    font-size: 28rpx;
+    color: #D9D9D9;
+    text-align: center;
+}
+
+.present .more view:first-child {
+    margin-top: 70rpx;
+}
+
+.present .more view:last-child {
+    margin-top: 40rpx;
+    padding-bottom: 40rpx;
+    line-height: 10rpx;
+}
+
+.article {
+    background-color: #D8D8D8;
+}
+
+.article .content {
+    height: 1500rpx;
+}
+
+
+
+
+
+
+/*转发样式*/
+
+.invite {
+    background: #E8E8E8;
+    z-index: 9999;
+    height: 300rpx;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.show_an_Invite {
+    animation: retract 0.5s;
+}
+
+@keyframes retract {
+    from {
+        bottom: -300rpx;
+    }
+    to {
+        bottom: 0;
+    }
+}
+
+.invite .top {
+    height: 220rpx;
+    background: white;
+}
+
+.invite .top button {
+    float: left;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 220rpx;
+    background-color: white;
+}
+
+.invite .top button::after {
+    border: none;
+}
+
+.invite .top .icon {
+    font-size: 50rpx;
+    color: #18A31D;
+    background-color: #E9E9E9;
+    border-radius: 50%;
+    margin: 20rpx 0;
+    width: 90rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    margin-left: 120rpx;
+}
+
+.invite .top .title {
+    font-size: 26rpx;
+    margin-top: -10rpx;
+}
+
+.invite .top .word {
+    margin-top: -20rpx;
+    font-size: 20rpx;
+    color: #C8C8C8;
+}
+
+.invite .under {
+    margin-top: 10rpx;
+    height: 70rpx;
+    background: white;
+    text-align: center;
+    font-size: 30rpx;
+    line-height: 70rpx;
+}
+
+.screenLock {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    z-index: 9991;
+    opacity: 0.4;
+}
+
+
+
+/*底部tabBar样式*/
+
+.tabBar {
+    height: 100rpx;
+    position: fixed;
+    width: 100%;
+    background-color: #F7F7F7;
+    bottom: 0rpx;
+    left: 0rpx;
+}
+
+.tabBar view {
+    float: left;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10rpx;
+}
+
+.tabBar .word {
+    font-size: 20rpx;
+}
+
+.currentBar {
+    color: #EF5133;
+}
+

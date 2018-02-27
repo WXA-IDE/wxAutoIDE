@@ -1,0 +1,8 @@
+
+    <view class="page__hd">
+        <view class="page__title">登陆失效</view>
+        <view class="page__desc">请重新登录</view>
+    </view>
+<view class="page__bd page__bd_spacing">
+    <button class="weui-btn" bindtap="login" type="primary">登录</button>
+</view>

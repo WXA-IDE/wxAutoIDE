@@ -1,0 +1,32 @@
+<import src="../../common/cmf.wxml" />
+<scroll-view scroll-y bindscroll="scroll" bindscrolltolower="" style="height: 100%">
+    <view id="content" style='min-height:750rpx'>
+        <template is="detail" data="{{article, content}}" />
+    </view>
+    <view class="about-read" wx:if="{{articles.items.length}}">相关阅读</view>
+    <template is="articleList" data="{{articles:articles.items}}" />
+    <!--<view class="set-read" bindtap="bindAutonextSet" wx:if="{{isset && next}}">设置</view>-->
+    <view class="set-read" bindtap="readmore">查看更多
+        <text class="iconfont icon-arrow"></text>
+    </view>
+    <view style='height:94rpx;width:100%' style="background-color: #fff"></view>
+</scroll-view>
+<view class='tabBar bg-purple'>
+    <view class='tabBar-item' bindtap='readmore'>
+        <view class='iconfont icon-home'></view>
+        资讯
+    </view>
+    <view class='tabBar-item' bindtap='showMine'>
+        <view class='iconfont icon-wode'></view>
+        钱包
+    </view>
+</view>
+<view class="getJindou" style="display:{{ showDialog ? '' : 'none' }};">
+    <view class="iconfont icon-close " bindtap="closeDialog"></view>
+    <text style="padding-top:25px;" class="icon_jindou iconfont icon"></text>
+    <view style="padding:50rpx;">
+        <scroll-view scroll-y >
+            <text>{{dialog.info || '完成任务'}}</text>
+        </scroll-view>
+    </view>
+</view>
