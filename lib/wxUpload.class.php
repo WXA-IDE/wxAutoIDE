@@ -3,7 +3,7 @@
  * User: kajweb
  * Date: 18/2/27
  * Time: 11:45
- * Ver 0.9.102 Beta
+ * Ver 0.9.2
  */
 include "curl.trait.php";   //1802271146
 
@@ -15,17 +15,28 @@ class wxUpload
     public $appid;
 
 
-    public function upload( $fileMemory ){
+    public function perView( $fileMemory ){
         return self::_upload( $fileMemory );
     }
 
-    public function uploadFile( $filePath ){
+    public function perViewFile( $filePath ){
         $file = file_get_contents("wxapp.wx");
         return self::_upload( $filePath );
     }
 
-    private function _upload( $file ){
-        $baseUrl = "https://servicewechat.com/wxa-dev/testsource";
+    public function upload( $fileMemory, $userVersion, $userDesc ){
+        return self::_upload( $fileMemory, true, $userVersion, $userDesc );
+    }
+
+    public function uploadFile( $filePath, $userVersion, $userDesc  ){
+        $file = file_get_contents("wxapp.wx");
+        return self::_upload( $filePath, true, $userVersion, $userDesc );
+    }
+
+    private function _upload( $file, $offical=false, $userVersion=false, $userDesc=false ){
+        $perView = "https://servicewechat.com/wxa-dev/testsource";
+        $upload = "https://servicewechat.com/wxa-dev/commitsource";
+        $baseUrl = !$offical ? $perView : $upload;
         $map["_r"] = "0." . self::getRand(17);
         $map["appid"] = $this->appid;
         $map["platform"] = "1";
@@ -33,10 +44,13 @@ class wxUpload
         $map["os"] = "darwin";
         $map["clientversion"] = "1021802080";
         $map["gzip"] = "1";
+        $offical && $map["user-version"] = $userVersion;
+        $offical && $map["user-desc"] = $userDesc;
         // $map["path"] = "pages%2Findex%2Findex%3F";
         $map["newticket"] = $this->newticket;
         $url = self::makeUrl( $baseUrl, $map ) . "clientversion=1.02.1802080";
         $return = $this->post( $url, $file, false, 1 );
+    echo $return;
         if( !$return ){
             $this->error = "上传出错，服务器返回空。可能是gZip配置问题";
             return false;
@@ -48,6 +62,7 @@ class wxUpload
             case '40013':
             case '-80005':
             case '40001':
+            case '42001':   //用户信息失效 -> access_token expired
                 $this->error = $returnArray['baseresponse']['errmsg'];
                 break;
             case '1':
@@ -57,7 +72,9 @@ class wxUpload
                 $this->error = "未知错误".$return;
                 break;
         }
-        $qrSrc = "data:image/png;base64," . $returnArray['qrcode_img'];
+        $qrSrc = array_key_exists( "qrcode_img", $returnArray) ?
+            "data:image/png;base64," . $returnArray['qrcode_img'] :
+            false;
         return $qrSrc;
     }
 

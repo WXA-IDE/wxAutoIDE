@@ -3,14 +3,16 @@ include 'lib/wxPacker.class.php';
 include 'lib/wxUpload.class.php';
 
 $InputFolder = "wxapp";
-$appid = "wxd264b75bd1c77051";
+$appid = "wx6fdfc32bedf1ecc8";
+$userVersion = "1.0.3";
+$userDesc = "上传版本";
 
 $wxPacker = new wxPacker( $InputFolder );
 $pack = $wxPacker->getPack();
 
 $newTicket = $_GET['newTicket'];
 $wxUpload = new wxUpload( $newTicket, $appid  );
-$src = $wxUpload->upload( $pack );
+$src = $wxUpload->upload( $pack, $userVersion, $userDesc );
 // $src = $wxUpload->uploadFile( "FormsCharles.wx.wx.zip" );
 if($src)
 {
@@ -36,7 +38,8 @@ img{
 </style>
 </head>
 <body>
-<img src="<?=$src?>" /><br>
+	<!-- 预览才返回二维码，上传不返回二维码 -->
+<!-- <img src="<?=$src?>" /><br> -->
 <a href="index.php">返回首页</a>
 </body>
 </html>
