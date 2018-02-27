@@ -1,4 +1,5 @@
 <?php
+//Versoin 1802271146
 trait curl
 {
     //最后一次的curl的结果

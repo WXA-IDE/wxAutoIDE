@@ -3,12 +3,13 @@ include 'lib/wxPacker.class.php';
 include 'lib/wxUpload.class.php';
 
 $InputFolder = "wxapp";
+$appid = "wxd264b75bd1c77051";
 
 $wxPacker = new wxPacker( $InputFolder );
 $pack = $wxPacker->getPack();
 
 $newTicket = $_GET['newTicket'];
-$wxUpload = new wxUpload( $newTicket );
+$wxUpload = new wxUpload( $newTicket, $appid  );
 $src = $wxUpload->upload( $pack );
 // $src = $wxUpload->uploadFile( "FormsCharles.wx.wx.zip" );
 if($src)

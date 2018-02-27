@@ -1,9 +1,10 @@
 <?php
 /* *
+ * Editing
  * 微信小程序打包器
  *
- * @Ver 1.0.101
- * @Date 18.02.26 14:28
+ * @Ver 1.0.200
+ * @Date 18.02.27 12:14
  * @TODO 支持压缩包文件
  */
 
@@ -100,9 +101,12 @@ class wxPacker
 	}
 
 	//获取文件信息
-	private function get_file_info( $filePath ){
+	private function get_file_info( $filePath, $path ){
 		// $fileName = "/" . $filePath;
-		$fileName = strstr( $filePath, "/" );
+		// $fileName = strstr( $filePath, "/" );
+		$fileName= substr( $filePath, strlen($path) );
+		// echo "deal: " .  $filePath . "\n";
+		// echo "rena: " .  $fileName . "\n";
 		$fileNameLength = strlen( $fileName );
 		$fileSize = filesize( $filePath );
 		$file = [
@@ -119,14 +123,14 @@ class wxPacker
 	}
 
 	//便利目录
-	private function get_all_files( $path ){
+	private function get_all_files( $path, $orgPath = false ){
 		$list = array();
 		foreach( glob( $path . '/*') as $item ){
 			if( is_dir( $item ) ){
-				$list = array_merge( $list , self::get_all_files( $item ) );
+				$list = array_merge( $list , self::get_all_files( $item, $orgPath?$orgPath:$path ) );
 			}
 			else{
-				$list[] = self::get_file_info( $item );
+				$list[] = self::get_file_info( $item, $orgPath?$orgPath:$path );
 			}
 		}
 		return $list;

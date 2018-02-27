@@ -1,19 +1,19 @@
 <?php
 /**
- * Created by Sublime.
  * User: kajweb
- * Date: 18/2/26
- * Time: 16:45
- * Ver 0.9 Beta
+ * Date: 18/2/27
+ * Time: 11:45
+ * Ver 0.9.102 Beta
  */
-include "curl.trait.php";
-// include "simple_html_dom.php";
+include "curl.trait.php";   //1802271146
 
 class wxUpload
 {
     use curl;
     public $newticket;
     public $error;
+    public $appid;
+
 
     public function upload( $fileMemory ){
         return self::_upload( $fileMemory );
@@ -27,7 +27,7 @@ class wxUpload
     private function _upload( $file ){
         $baseUrl = "https://servicewechat.com/wxa-dev/testsource";
         $map["_r"] = "0." . self::getRand(17);
-        $map["appid"] = "wxd264b75bd1c77051";
+        $map["appid"] = $this->appid;
         $map["platform"] = "1";
         $map["ext_appid"] = "";
         $map["os"] = "darwin";
@@ -38,28 +38,33 @@ class wxUpload
         $url = self::makeUrl( $baseUrl, $map ) . "clientversion=1.02.1802080";
         $return = $this->post( $url, $file, false, 1 );
         if( !$return ){
-            $this->error = "返回空错误";
+            $this->error = "上传出错，服务器返回空。可能是gZip配置问题";
             return false;
         }
         $returnArray = json_decode( $return, 1 );
-        // if( !$returnArray ){
-        //     $this->error = "返回空错误";
-        //     return false;
-        // }
-        if( $returnArray['baseresponse']['errcode'] != 0 ){
-            //0 正常
-            //40001 登陆问题
-            //-80002 没有开发权限。
-            $this->error = "上传失败错误";
-            return false;
+        switch ( $returnArray['baseresponse']['errcode'] ) {
+            case '0':
+                break;
+            case '40013':
+            case '-80005':
+            case '40001':
+                $this->error = $returnArray['baseresponse']['errmsg'];
+                break;
+            case '1':
+                $this->error = "微信服务器返回错误代码1，可能是文件有错，无法正常打包";
+                break;
+            default:
+                $this->error = "未知错误".$return;
+                break;
         }
         $qrSrc = "data:image/png;base64," . $returnArray['qrcode_img'];
         return $qrSrc;
     }
 
     //no EXT dev
-    public function __construct( $newticket ){
+    public function __construct( $newticket, $appid ){
         $this->newticket = $newticket;
+        $this->appid = $appid;
     }
 
     private function getRand( $len ) {
@@ -85,7 +90,7 @@ class wxUpload
         return (float)sprintf('%.0f',(floatval($t1)+floatval($t2))*1000); 
     }
 
-    //UL
+    //UeL
     private function sendStreamFile($url, $file)  {  
     if (empty($url) || empty($file))  
     {  
