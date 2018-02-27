@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "babel news2 --out-dir news2",
+    "test": "node javascriptBabel"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
