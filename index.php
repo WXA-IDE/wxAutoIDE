@@ -50,13 +50,18 @@ img{
     width: 260px;
     height: 260px;
 }
+.qrimg{
+    position: relative;
+}
 </style>
 </head>
 <body>
 <div class="bg">
 <div class="login_box"><br>
 <div id="app">
-    <img :src="qrImg" />
+    <div class="qrimg">
+        <img :src="header?'resources/header.png':qrImg" />
+    </div>
     <div class="tip">{{tips}}</div>
     <span class="tips">执行该操作需要你使用微信进行扫码验证</span>
 </div>
@@ -67,6 +72,7 @@ img{
 new Vue({
   el: '#app',
   data: {
+    header:false,
     qrImg: 'resources/loading.gif',
     tips: '请扫描二维码进行登陆'
   },
@@ -123,16 +129,19 @@ new Vue({
                 const STATE_WAIT = "408";          //继续等待用户扫码
                 switch(response['window.wx_errcode']){
                     case STATE_REFRESH:
+                        _this.header = false;
                         _this.init();
                     break;
-                    case STATE_CANCEL:
-                        _this.tips = "用户取消了扫描"
-                        setTimeout(()=>{
-                            _this.wait();
-                            _this.tips = "请扫描二维码进行登陆"
-                        },1000);
-                    break;
+                    // case STATE_CANCEL:
+                    //     _this.header = false;
+                    //     _this.tips = "用户取消了扫描"
+                    //     setTimeout(()=>{
+                    //         _this.wait();
+                    //         _this.tips = "请扫描二维码进行登陆"
+                    //     },1000);
+                    // break;
                     case STATE_WAIT_CONFIRM:
+                        _this.header = true;
                         _this.tips = "扫描成功，请确认"
                         setTimeout(()=>{
                             _this.wait();
@@ -155,6 +164,9 @@ new Vue({
                         });  
                     break;
                     case STATE_WAIT:
+                    case STATE_CANCEL:
+                        _this.tips = "请扫描二维码进行登陆"
+                        _this.header = false;
                         _this.wait();
                     break;
                 }
