@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1,target-densitydpi=device-dpi "> 
 <meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1,target-densitydpi=device-dpi "> 
 <meta charset="utf-8">
-<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script> 
+<script src="resources/vue.min.js"></script> 
 <style>
 html,body{
     font-size: 25px;
