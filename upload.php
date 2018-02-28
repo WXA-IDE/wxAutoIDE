@@ -1,9 +1,9 @@
 <?php
 $newTicket = $_REQUEST['newTicket'];
-if ($_FILES["file"]["error"] > 0) {
+if ( isset($_FILES["file"]) && $_FILES["file"]["error"] > 0) {
     $errorTip = "上传没有成功，错误代码：" . $_FILES["file"]["error"];
     // echo "Error: " . $_FILES["file"]["error"] . "<br />";
-} elseif ($_FILES["file"]["type"] == "application/zip") {
+} elseif ( isset($_FILES["file"]) && $_FILES["file"]["type"] == "application/zip") {
     $folder = "upload/" . date("YmdHis") . rand(1, 999);
     unZip($_FILES["file"]["tmp_name"], $folder);
     include 'lib/wxPacker.class.php';
