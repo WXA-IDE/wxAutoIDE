@@ -57,6 +57,8 @@ class wxUpload
             return false;
         }
         $returnArray = json_decode( $return, 1 );
+        // echo $return;
+        // print_r($returnArray);
         switch ( $returnArray['baseresponse']['errcode'] ) {
             case '0':
                 break;

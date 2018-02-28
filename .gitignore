@@ -1,4 +1,8 @@
 .DS_Store
 */.DS_Store
-.node_modules/
+node_modules/
 .qr_temp/
+package-lock.json
+
+qr_temp/*
+upload/*

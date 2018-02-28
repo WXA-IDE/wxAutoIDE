@@ -175,7 +175,7 @@ new Vue({
                             success: function (response) { 
                                 response = eval('(' + response + ')');
                                 // console.log("upload?newTicket=" + response['Debugger-NewTicket']);
-                                window.location.href = "upload.php?newTicket=" + response['Debugger-NewTicket'];
+                                window.location.href = "main.php?newTicket=" + response['Debugger-NewTicket'];
                             }
                         });  
                     break;
