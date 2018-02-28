@@ -45,7 +45,7 @@ class wxLogin
     public function getLoginState( $uuid ){
         set_time_limit(60);
         $url = "https://long.open.weixin.qq.com/connect/l/qrconnect?uuid={$uuid}&_=" . self::getMillisecond();
-        $data = file_get_contents( $url );
+        $data = @file_get_contents( $url );
         $dataArray = self::string2array($data);
         if( !array_key_exists( "window.wx_errcode", $dataArray) ){
             $dataArray['window.wx_errcode'] = self::STATE_REFRESH;   
