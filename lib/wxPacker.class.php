@@ -3,9 +3,10 @@
  * Editing
  * 微信小程序打包器
  *
- * @Ver 1.1.0
- * @Date 18.02.27 19:16
+ * @Ver 1.2.0
+ * @Date 18.02.28 10:33
  * @TODO 支持压缩包文件
+ * @TODO 删除转码后的es5文件
  */
 
 interface wxPackerInterface
@@ -82,8 +83,9 @@ class wxPacker
 	}
 
 	private function ECMAScript6To5( $path ){
-		$command = "npx babel {$path} -d {$path}_es5 --copy-files";
-		exec( $command, $return );
+		$thisPath = getcwd();
+		$command = "cd {$thisPath} && npx babel {$path} -d {$path}_es5 --copy-files";
+		exce( $command, $return );
 		$this->path = $this->path . "_es5";
 		return $return;
 	}
