@@ -53,9 +53,25 @@ img{
 .qrimg{
     position: relative;
 }
+.logo {
+    position: absolute;
+    left: 80px;
+    top: 50px;
+    opacity: 0.32;
+}
+.web_wechat_login_logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 140px;
+    height: 150px;
+    background: url(http://qingtingtech.com/Public/static/portal/images/logo.png)no-repeat;
+}
 </style>
 </head>
 <body>
+<div class="logo">
+    <i class="web_wechat_login_logo"></i>
+</div>
 <div class="bg">
 <div class="login_box"><br>
 <div id="app">
@@ -132,20 +148,20 @@ new Vue({
                         _this.header = false;
                         _this.init();
                     break;
-                    // case STATE_CANCEL:
-                    //     _this.header = false;
-                    //     _this.tips = "用户取消了扫描"
-                    //     setTimeout(()=>{
-                    //         _this.wait();
-                    //         _this.tips = "请扫描二维码进行登陆"
-                    //     },1000);
-                    // break;
+                    case STATE_CANCEL:
+                        _this.header = false;
+                        _this.tips = "请扫描二维码进行登陆"
+                        setTimeout(()=>{
+                            _this.wait();
+                            _this.tips = "请扫描二维码进行登陆"
+                        },2000);
+                    break;
                     case STATE_WAIT_CONFIRM:
                         _this.header = true;
                         _this.tips = "扫描成功，请确认"
                         setTimeout(()=>{
                             _this.wait();
-                        },1000);
+                        },1500);
                     break;
                     case STATE_CONFIRM:
                         _this.tips = "正在跳转，请稍后"
