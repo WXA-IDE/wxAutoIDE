@@ -14,16 +14,16 @@ $pack = $wxPacker->Gzip()->ES625()->getPack();
 $newTicket = $_GET['newTicket'];
 $wxUpload = new wxUpload( $newTicket, $appid  );
 // $src = $wxUpload->preView( $pack );
-$src = $wxUpload->upload( $pack, $userVersion, $userDesc );exit("可能上传成功，请去后台查看。如果不行，请先用preView测试");
+$src = $wxUpload->upload( $pack, $userVersion, $userDesc );
 
 
 
 
 if($src)
 {
-	echo "上传成功<br>";
+	echo "上传成功<br><br>";
 }else{
-	echo "上传失败<br>";
+	echo "上传失败<br><br>";
 	echo $wxUpload->error;
 }
 ?>
@@ -37,15 +37,15 @@ html{
 	padding: 50px 0;
 }
 img{
-	width: 120px;
-	height: 120px;
+	width: 240px;
+	height: 240px;
 }
 </style>
 </head>
 <body>
 	<!-- 预览才返回二维码，上传不返回二维码 -->
-<img src="<?=$src?>" /><br>
+<img src="<?=$src?>" /><br><br>
 <a href="index.php">返回首页</a>
-<h1>如果失败，请先   npm install --save</h1>
+
 </body>
 </html>

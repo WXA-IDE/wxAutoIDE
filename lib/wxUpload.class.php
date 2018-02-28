@@ -2,10 +2,11 @@
 /**
  * User: kajweb
  * Date: 18/2/27
- * Time: 13:55
+ * Time: 19:34
  * Ver 0.9.2
  */
 include "curl.trait.php";   //1802271146
+include 'phpqrcode/qrlib.php';
 
 class wxUpload
 {
@@ -50,7 +51,7 @@ class wxUpload
         $map["newticket"] = $this->newticket;
         $url = self::makeUrl( $baseUrl, $map ) . "clientversion=1.02.1802080";
         $return = $this->post( $url, $file, false, 1 );
-echo $return;
+// echo $return."<br>"; //如果运行不正常，启动这里调试
         if( !$return ){
             $this->error = "上传出错，服务器返回空。可能是gZip配置问题";
             return false;
@@ -72,10 +73,25 @@ echo $return;
                 $this->error = "未知错误".$return;
                 break;
         }
-        $qrSrc = array_key_exists( "qrcode_img", $returnArray) ?
-            "data:image/png;base64," . $returnArray['qrcode_img'] :
-            false;
+        $qrSrc = false;
+        $returnArray['baseresponse']['errcode'] == 0 &&
+        $qrSrc = "data:image/png;base64," . (
+            array_key_exists( "qrcode_img", $returnArray) ?
+                $returnArray['qrcode_img'] :
+                self::getQRcode( $this->appid )
+        );
         return $qrSrc;
+    }
+
+    private function getQRcode( $appid ){
+        $size = 8;
+        $margin = 1;
+        $url = "https://open.weixin.qq.com/sns/getexpappinfo?appid=" . $appid;
+        $temp = "qr_temp/";
+        is_dir( $temp ) OR mkdir( $temp, 0777, true );
+        $tempFile = $temp.$appid."_temp";
+        QRcode::png( $url, $tempFile, QR_ECLEVEL_H, $size, $margin );
+        return base64_encode( file_get_contents("$tempFile") );
     }
 
     //no EXT dev

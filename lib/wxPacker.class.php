@@ -85,7 +85,7 @@ class wxPacker
 	private function ECMAScript6To5( $path ){
 		$thisPath = getcwd();
 		$command = "cd {$thisPath} && npx babel {$path} -d {$path}_es5 --copy-files";
-		exce( $command, $return );
+		exec( $command, $return );
 		$this->path = $this->path . "_es5";
 		return $return;
 	}
