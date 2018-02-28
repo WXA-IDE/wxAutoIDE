@@ -7,7 +7,7 @@
 <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script> 
 <style>
 html,body{
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     height: 100%;
     margin: 0;
@@ -36,6 +36,16 @@ html,body{
     -moz-box-shadow: #999 0 2px 10px;
     -webkit-box-shadow: #999 0 2px 10px;
 }
+.tip{
+    margin-top: 10px;
+}
+.tips{
+	color: #888;
+	font-size: 18px;
+    padding: 20px;
+    margin-top: 20px;
+    display: inline-block;
+}
 img{
     width: 260px;
     height: 260px;
@@ -47,11 +57,11 @@ img{
 <div class="login_box"><br>
 <div id="app">
     <img :src="qrImg" />
-    <div class="tips">{{tips}}</div>
+    <div class="tip">{{tips}}</div>
+    <span class="tips">执行该操作需要你使用微信进行扫码验证</span>
 </div>
-
 <br>
-<a href="main.php?uuid=<?=end($qr)?>">我已经确认登陆</a>
+<!-- <a href="main.php?uuid=<?=end($qr)?>">我已经确认登陆</a> -->
 </div></div>
 <script>
 new Vue({
